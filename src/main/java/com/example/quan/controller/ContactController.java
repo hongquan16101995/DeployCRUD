@@ -31,7 +31,7 @@ public class ContactController {
         return categoryService.findAll();
     }
 
-    @GetMapping("/")
+    @GetMapping
     public ModelAndView listContact(){
         return new ModelAndView("list", "contacts", contactService.findAll());
     }
