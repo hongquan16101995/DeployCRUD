@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head"></head>
+<body>
+<h3>Add Contact</h3>
+<p>
+    <a th:href="@{/}">
+        Back to contact list
+    </a>
+</p>
+<div id="form">
+    <form th:object="${contact}" method="POST" enctype="multipart/form-data">
+        <div>
+            <label>Name</label>
+            <input type="text" th:field="*{name}"/>
+        </div>
+        <div>
+            <label>Phone</label>
+            <input type="text" th:field="*{phone}"/>
+        </div>
+        <div>
+            <label>Avatar</label>
+            <input type="file" th:field="*{avatar}">
+        </div>
+        <div>
+            <label>Category</label>
+            <select th:field="*{category}">
+                <option th:each="p : ${categories}" th:value="${p.id}" th:text="${p.category}"></option>
+            </select>
+        </div>
+        <input type="submit" value="Creat new contact">
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
