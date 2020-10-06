@@ -31,9 +31,9 @@ public class ContactController {
         return categoryService.findAll();
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ModelAndView listContact(){
-        return new ModelAndView("list", "contacts", contactService.findAll());
+        return new ModelAndView("index", "contacts", contactService.findAll());
     }
 
     @GetMapping("/create-contact")
@@ -53,7 +53,7 @@ public class ContactController {
         }
         contact.setImage(image);
         contactService.saveContact(contact);
-        return new ModelAndView("list", "contacts", contactService.findAll());
+        return new ModelAndView("index", "contacts", contactService.findAll());
     }
 
     @GetMapping("/edit-contact/{id}")
@@ -65,7 +65,7 @@ public class ContactController {
     @PostMapping("/edit-contact/{id}")
     public ModelAndView updateContact(Contact contact){
         contactService.saveContact(contact);
-        return new ModelAndView("list", "contacts", contactService.findAll());
+        return new ModelAndView("index", "contacts", contactService.findAll());
     }
 
     @GetMapping("/view-contact/{id}")
@@ -76,6 +76,6 @@ public class ContactController {
     @GetMapping("/delete-contact/{id}")
     public ModelAndView deleteContact(@PathVariable("id") long id){
         contactService.remove(id);
-        return new ModelAndView("list", "contacts", contactService.findAll());
+        return new ModelAndView("index", "contacts", contactService.findAll());
     }
 }
