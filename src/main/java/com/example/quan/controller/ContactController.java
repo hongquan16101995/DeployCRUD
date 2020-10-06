@@ -33,7 +33,7 @@ public class ContactController {
 
     @GetMapping("/")
     public ModelAndView listContact(){
-        return new ModelAndView("index", "contacts", contactService.findAll());
+        return new ModelAndView("index");
     }
 
     @GetMapping("/create-contact")
